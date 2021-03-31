@@ -3,9 +3,9 @@ import UserList from "../components/UserList";
 
 const App = () => {
   return (
-    <div>
+    <React.Fragment>
       <UserList />
-    </div>
+    </React.Fragment>
   );
 };
 
