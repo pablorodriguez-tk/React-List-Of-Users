@@ -2,6 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { fetchUsers } from "../actions";
 import "./UserCard.css";
+import { Link } from "react-router-dom";
 
 class UserCard extends React.Component {
   componentDidMount() {
@@ -9,26 +10,28 @@ class UserCard extends React.Component {
   }
 
   renderList() {
-    return this.props.users.map((user) => {
+    return this.props.users.map((user, index) => {
       return (
-        <div className=" col" href="#">
-          <div className="card">
-            <img
-              src={`${user.picture.large}`}
-              className="card-img-top rounded-circle mx-auto"
-              alt="..."
-            />
-            <div className="card-body mx-auto">
-              <h5 className="card-title">
-                {user.name.first} {user.name.last}
-              </h5>
-              <p className="text-secondary">
-                <i className="bi bi-geo-alt-fill"> </i>
-                {user.location.country}
-              </p>
+        <Link to={"/" + (index + 1)} key={index}>
+          <div className=" col" href="#">
+            <div className="card">
+              <img
+                src={`${user.picture.large}`}
+                className="card-img-top rounded-circle mx-auto"
+                alt="..."
+              />
+              <div className="card-body mx-auto">
+                <h5 className="card-title">
+                  {user.name.first} {user.name.last}
+                </h5>
+                <p className="text-secondary">
+                  <i className="bi bi-geo-alt-fill"> </i>
+                  {user.location.country}
+                </p>
+              </div>
             </div>
           </div>
-        </div>
+        </Link>
       );
     });
   }
