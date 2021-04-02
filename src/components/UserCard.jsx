@@ -1,68 +1,42 @@
 import React from "react";
-import { connect } from "react-redux";
-import { fetchUsers } from "../actions";
-import "./UserCard.css";
+import "../style/UserCard.css";
 import { Link } from "react-router-dom";
-import InfiniteScroll from 'react-infinite-scroll-component'
 
-class UserCard extends React.Component {
-  componentDidMount() {
-    this.props.fetchUsers();
 
-  }
+const UserCard = (props) => {
 
-  renderList() {
-    return this.props.users.map((user, index) => {
-      return (
+const fullName =  `${props.name.title}. ${props.name.first} ${props.name.last}`
+
+    return (
+<div className="col">
         <Link
-          to={`/${user.login.username}`}
-          key={index}
-          className="text-decoration-none text-dark"
+          to={{
+            pathname:`/${props.login.username}`,
+            state: props}}
+          className="text-decoration-none text-dark col"
         >
-          <div className=" col" href="#">
+          <div  href="#">
             <div className="card">
               <img
-                src={`${user.picture.large}`}
+                src={`${props.picture.large}`}
                 className="card-img-top rounded-circle mx-auto"
-                alt="..."
+                alt={`${props.picture.large}`}
               />
               <div className="card-body mx-auto ">
                 <h5 className="card-title ">
-                  {user.name.first} {user.name.last}
+                  {fullName}
                 </h5>
                 <p className="text-secondary ">
                   <i className="bi bi-geo-alt-fill "> </i>
-                  {user.location.country}
+                  {props.location.country}
                 </p>
               </div>
             </div>
           </div>
         </Link>
-      );
-    });
-  }
-
-  render() {
-    return (
-      <InfiniteScroll
-      dataLength={this.props.users.length} //This is important field to render the next data
-      next={this.props.fetchUsers}
-      refreshFunction
-      hasMore
-      >
-      <div className="container">
-        <div className="row row-cols-2 row-cols-md-3 row-cols-lg-4 g-2 g-md-3 g-lg-3">
-
-                {this.renderList()}
-
         </div>
-      </div>
-      </InfiniteScroll> 
     );
-  }
+
 }
 
-const mapStateToProps = (state) => {
-  return { users: state };
-};
-export default connect(mapStateToProps, { fetchUsers })(UserCard);
+export default UserCard;
