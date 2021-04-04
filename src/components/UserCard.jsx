@@ -3,13 +3,16 @@ import "../style/UserCard.css";
 import { Link } from "react-router-dom";
 
 const UserCard = (props) => {
+  const country = `${props.location.country}`;
   const fullName = `${props.name.first} ${props.name.last}`;
+  const picture = `${props.picture.large}`;
+  const userName = `${props.login.username}`;
 
   return (
     <div className="col">
       <Link
         to={{
-          pathname: `/${props.login.username}`,
+          pathname: `/${userName}`,
           state: props,
         }}
         className="text-decoration-none text-dark col"
@@ -17,15 +20,15 @@ const UserCard = (props) => {
         <div>
           <div className="card">
             <img
-              src={`${props.picture.large}`}
+              src={`${picture}`}
               className="card-img-top rounded-circle mx-auto"
-              alt={`${props.picture.large}`}
+              alt={`${picture}`}
             />
             <div className="card-body mx-auto ">
               <h5 className="card-title ">{fullName}</h5>
               <p className="text-secondary ">
                 <i className="bi bi-geo-alt-fill "> </i>
-                {props.location.country}
+                {country}
               </p>
             </div>
           </div>
