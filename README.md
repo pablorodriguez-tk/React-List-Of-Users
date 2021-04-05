@@ -7,7 +7,7 @@ When you click on a user, it shows a screen where there are more details.
 
 Using React-Redux, just to practice redux because it's not really necessary in this little app
 
-## [Live Site]()
+## [Live Site](https://happy-austin-72f643.netlify.app/)
 
 ![User list](https://res.cloudinary.com/drcq2kx3u/image/upload/v1617646323/GitHub/%20React-List-Of-Users/React_random_user_list_uyrkbr.jpg)
 
