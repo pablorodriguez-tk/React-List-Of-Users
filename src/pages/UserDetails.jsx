@@ -12,7 +12,7 @@ const UserDetails = (props) => {
     setAnimation(true);
 
     return `Animation:${Animation}`;
-  }, []);
+  }, [Animation]);
 
   const history = useHistory();
   let { id } = useParams();
